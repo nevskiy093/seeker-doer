@@ -16,10 +16,11 @@ pub struct EscrowState {
     pub contractor_pubkey: Pubkey,
     pub arbitrator_pubkey: Pubkey,
     pub amount: u64,
+    pub instant_payout_amount: u64, // Сумма для мгновенной выплаты (аванс)
     pub deal_state: DealState,
 }
 
 impl EscrowState {
-    // 32 (client) + 32 (contractor) + 32 (arbitrator) + 8 (amount) + 1 (state)
-    pub const LEN: usize = 32 + 32 + 32 + 8 + 1;
+    // 32+32+32 (ключи) + 8 (сумма) + 8 (аванс) + 1 (статус)
+    pub const LEN: usize = 32 + 32 + 32 + 8 + 8 + 1;
 }
